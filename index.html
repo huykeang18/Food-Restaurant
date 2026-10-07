@@ -22,7 +22,7 @@
         <ul class="nav_links" id="nav_links">
             <li><a href="#">Home</a></li>
             <li><a href="#">Special</a></li>
-            <li><a href="#">Cheif</a></li>
+            <li><a href="#">Chef</a></li>
             <li><a href="#">Client</a></li>
             <li><a href="#">Contact Us</a></li>
         </ul>
@@ -182,24 +182,105 @@
                 </p>
                 <ul class="chef_list">
                     <li>
-                        <span><i class="fa-solid fa-square-check"></i>
-                            Savor culinary brilliance from master chefs worldwide.
-                        </span>
+                        <span><i class="fa-solid fa-square-check"></i></span>
+                        Savor culinary brilliance from master chefs worldwide.
                     </li>
                     <li>
-                        <span><i class="fa-solid fa-square-check"></i>
-                            Experience innovative creations with attention to detail.
-                        </span>
+                        <span><i class="fa-solid fa-square-check"></i></span>
+                        Experience innovative creations with attention to detail.
                     </li>
                     <li>
-                        <span><i class="fa-solid fa-square-check"></i>
-                            Enjoy dishes crafted with an unwavering passion for perfection.
-                        </span>
+                        <span><i class="fa-solid fa-square-check"></i></span>
+                        Enjoy dishes crafted with an unwavering passion for perfection.
                     </li>
                 </ul>
             </div>
         </div>
     </section>
+
+    <section class="testimonial_section">
+        <h2 class="section_header">What Our Customers Are Saying?</h2>
+        <p class="section_description">
+            Discover firsthand experiences and testimonials from our valued patrons.
+            Explore the feedback and reviews that showcase our commitment to quality, service,and customer satisfaction.
+        </p>
+        <div class="testimonial_container" id="testimonial_container">
+            <div class="testimonial_card active">
+                <p>
+                    FoodMan's culinary expertise never fails to impress! Every dish is a masterpiece, bursting with
+                    flavor and freshness.
+                </p>
+                <img src="assets/client-1.png" alt="">
+                <h4>David Lee</h4>
+                <h5>Business Executive</h5>
+            </div>
+            <div class="testimonial_card">
+                <p>
+                    I always turn to FoodMan for a quick and delicious meal. Their efficient service and mouthwatering
+                    options never disappoint!
+                </p>
+                <img src="assets/client-2.png" alt="">
+                <h4>Emily Johnson</h4>
+                <h5>Food Blogger</h5>
+            </div>
+            <div class="testimonial_card">
+                <p>
+                    FoodMan has become my go-to for all my catering needs. Their attention to detail and exceptional
+                    customer service make every event a success.
+                </p>
+                <img src="assets/client-3.png" alt="">
+                <h4>Michael Thompson</h4>
+                <h5>Event Planner</h5>
+            </div>
+        </div>
+
+        <div class="dots" id="dots"></div>
+    </section>
+
+    <footer class="footer" id="contact">
+        <div class="section_container footer_container">
+            <div class="footer_col">
+                <div class="logo footer_logo">
+                    <a href="#">Food <span>man</span></a>
+                </div>
+                <p class="section_description">
+                    Embark on a gastronomic journey with FoodMan, where every bite tells a story and every dish is
+                    crafted to perfection.
+                </p>
+            </div>
+            <div class="footer_col">
+                <h4>Projuct</h4>
+                <ul class="footer_links">
+                    <li><a href="#">Menu</a></li>
+                    <li><a href="#">Specials</a></li>
+                    <li><a href="#">Meal Deals</a></li>
+                    <li><a href="#">Catering Options</a></li>
+                    <li><a href="#">Seasonal Offerings</a></li>
+                </ul>
+            </div>
+            <div class="footer_col">
+                <h4>Information</h4>
+                <ul class="footer_links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Nutrition Information</a></li>
+                    <li><a href="#">Allergen Information</a></li>
+                </ul>
+            </div>
+            <div class="footer_col">
+                <h4>Company</h4>
+                <ul class="footer_links">
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer_bar">
+            Copyright © 2026 HK Penhchet. All rights reverved.
+        </div>
+    </footer>
 
     <script>
         const menuBtn = document.getElementById('menu_btn');
@@ -216,6 +297,35 @@
                 document.querySelector('nav').classList.remove('scrolled');
             }
         })
+    </script>
+
+    <script>
+        const cards = document.querySelectorAll('.testimonial_card');
+        const dotsContainer = document.getElementById("dots");
+        let currentIndex = 0;
+
+        cards.forEach((_, idx) => {
+            const dot = document.createElement('span');
+            dot.addEventListener('click', () => showSlide(idx));
+            dotsContainer.appendChild(dot);
+        })
+
+        const dots = document.querySelectorAll('.dots span');
+        function showSlide(index) {
+            cards.forEach(card => card.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            cards[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentIndex = index;
+        }
+
+        function autoSlide() {
+            currentIndex = (currentIndex + 1) % cards.length;
+            showSlide(currentIndex);
+        }
+
+        showSlide(currentIndex);
+        setInterval(autoSlide, 5000);
     </script>
 </body>
 
